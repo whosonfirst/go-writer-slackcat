@@ -1,4 +1,4 @@
-# go-pubsub-writer
+# go-slackcat-writer
 
 A Go package for sending messages to a Slack channel using a standard io.Writer interface
 
@@ -20,7 +20,7 @@ func main() {
 	flag.Parse()
 	args := flag.Args()
 
-	w, err := pubsub.NewWriter(*config)
+	w, err := slackcat.NewWriter(*config)
 
 	if err != nil {
 		panic(err)
