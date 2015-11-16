@@ -8,12 +8,12 @@ import (
 
 func main() {
 
-	var channel = flag.String("config", "", "The path to your Slackcat config file")
+	var config = flag.String("config", "", "The path to your Slackcat config file")
 
 	flag.Parse()
 	args := flag.Args()
 
-	w, err := pubsub.NewWriter(*config)
+	w, err := slackcat.NewWriter(*config)
 
 	if err != nil {
 		panic(err)

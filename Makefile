@@ -12,3 +12,6 @@ deps:   self
 fmt:
 	go fmt cmd/*.go
 	go fmt *.go
+
+test:	self fmt
+	go build -o bin/test cmd/test.go

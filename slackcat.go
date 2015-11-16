@@ -1,21 +1,20 @@
 package slackcat
 
 import (
-       slack "github.com/whosonfirst/slackcat"
-       "net/http"
-       "strings"
+	slack "github.com/whosonfirst/slackcat"
+	"strings"
 )
 
 type Writer struct {
-     Config *slack.Config
+	Config *slack.Config
 }
 
-func NewWriter(config string) (*Writer, error) {
+func NewWriter(path string) (*Writer, error) {
 
-     		      config, err := &slack.ReadConfig(path)
-     		      
+	config, err := slack.ReadConfig(path)
+
 	if err != nil {
-	   return nil, err
+		return nil, err
 	}
 
 	w := Writer{
@@ -30,27 +29,27 @@ func (w Writer) WriteString(s string) (n int64, err error) {
 	return r.WriteTo(w)
 }
 
-func (w Writer) Write(p []byte) (n int, err error) {
+func (w Writer) Write(p []byte) (int, error) {
 
-	var msg string
-	msg = string(p[:])
+	var text string
+	text = string(p[:])
 
 	msg := slack.SlackMsg{
-	    Channel:   w.Config.Channel,
-	    Username:  u.Config.Username,
-	    Parse:     "full",
-	    Text:      msg,
+		Channel:  w.Config.Channel,
+		Username: w.Config.Username,
+		Parse:    "full",
+		Text:     text,
 	}
 
 	// sudo put me in a goroutine?
 
-	err = msg.Post(w.Config.WebhookUrl)
+	err := msg.Post(w.Config.WebhookUrl)
 
- 	if err != nil {
+	if err != nil {
 	   return 0, err
-	}													   		    }
+	}
 
-	count := len(msg)
+	count := len(text)
 	return count, nil
 }
 
