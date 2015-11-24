@@ -36,6 +36,9 @@ func main() {
 		panic(err)
 	}
 
+	// WriteString is provided as a convenience if you don't
+	// feel like []byte() all the things
+
 	_, err = w.WriteString("WriteString " + msg)
 
 	if err != nil {
