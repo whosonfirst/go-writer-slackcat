@@ -39,8 +39,8 @@ func main() {
 	}
 
 	// WriteString is provided as a convenience if you don't
-	// feel like []byte() all the things per the default io.Writer
-	// interface spec
+	// feel like []byte("-ing") all the things per the default
+	// io.Writer interface spec
 
 	_, err = w.WriteString("WriteString " + msg)
 
