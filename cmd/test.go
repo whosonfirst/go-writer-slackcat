@@ -21,7 +21,15 @@ func main() {
 
 	msg := strings.Join(args, " ")
 
-	_, err = w.WriteString(msg)
+	b := []byte("Write " + msg)
+
+	_, err = w.Write(b)
+
+	if err != nil {
+		panic(err)
+	}
+
+	_, err = w.WriteString("WriteString " + msg)
 
 	if err != nil {
 		panic(err)

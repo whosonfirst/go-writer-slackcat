@@ -46,7 +46,7 @@ func (w Writer) Write(p []byte) (int, error) {
 	err := msg.Post(w.Config.WebhookUrl)
 
 	if err != nil {
-	   return 0, err
+		return 0, err
 	}
 
 	count := len(text)
