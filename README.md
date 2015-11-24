@@ -4,6 +4,8 @@ A Go package for sending messages to a Slack channel using a standard io.Writer 
 
 ## Usage
 
+### Simple
+
 ```
 package main
 
@@ -15,7 +17,7 @@ import (
 
 func main() {
 
-	var channel = flag.String("config", "", "The path to your Slackcat config file")
+	var config = flag.String("config", "", "The path to your Slackcat config file")
 
 	flag.Parse()
 	args := flag.Args()
@@ -48,6 +50,38 @@ func main() {
 }
 ```
 
-## Caveats
+### Fancy
+
+```
+package main
+
+import (
+	"flag"
+	"github.com/whosonfirst/go-slackcat-writer"
+	"io"
+	"log"
+	"os"
+	"strings"
+)
+
+func main() {
+
+	var config = flag.String("config", "", "The path to your Slackcat config file")
+
+	flag.Parse()
+	args := flag.Args()
+
+	msg := strings.Join(args, " ")
+
+	slack, _ := slackcat.NewWriter(*config)
+
+	writer := io.MultiWriter(os.Stdout, slack)
+
+	logger := log.New(writer, "[example] ", log.Ldate|log.Ltime|log.Lshortfile)
+	logger.Println(msg)
+}
+```
+
+## See also
 
 * https://github.com/whosonfirst/slackcat

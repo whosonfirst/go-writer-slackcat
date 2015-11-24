@@ -15,3 +15,4 @@ fmt:
 
 test:	self fmt
 	go build -o bin/test cmd/test.go
+	go build -o bin/test_multi cmd/test_multi.go
