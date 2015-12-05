@@ -1,4 +1,4 @@
-# go-slackcat-writer
+# go-writer-slackcat
 
 A Go package for sending messages to a Slack channel using a standard io.Writer interface
 
@@ -11,7 +11,7 @@ package main
 
 import (
 	"flag"
-	"github.com/whosonfirst/go-slackcat-writer"
+	"github.com/whosonfirst/go-writer"
 	"strings"
 )
 
@@ -57,7 +57,7 @@ package main
 
 import (
 	"flag"
-	"github.com/whosonfirst/go-slackcat-writer"
+	"github.com/whosonfirst/go-writer-slackcat"
 	"io"
 	"log"
 	"os"
