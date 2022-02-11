@@ -2,6 +2,10 @@
 
 A Go package for sending messages to a Slack channel using a standard io.Writer interface
 
+## Important
+
+This package has been superseded by [sfomuseum/go-slack/writer](https://github.com/sfomuseum/go-slack/tree/main/writer) and is no longer being maintained.
+
 ## Usage
 
 ### Simple
